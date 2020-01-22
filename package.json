@@ -1,0 +1,38 @@
+{
+  "name": "node-security-test",
+  "version": "1.0.0",
+  "description": "A NodeJS server that's being designed with security as the priority, for practice",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmagera07/node-security-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmagera07/node-security-test/issues"
+  },
+  "homepage": "https://github.com/nmagera07/node-security-test#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "express-validator": "^6.3.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.8",
+    "rate-limiter-flexible": "^1.3.1",
+    "sqlite3": "^4.1.1",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
