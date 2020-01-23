@@ -6,17 +6,21 @@ const router = express.Router()
 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { check, validationResult } = require('express-validator')
+const { check, body, validationResult } = require('express-validator')
 const secrets = require('../auth/secrets.js')
 
 const checkValidate = [
+    body('email')
+        .isEmail()
+        .normalizeEmail()
+        .withMessage('Invalid email'),
     check('username')
         .isLength({ min: 8})
-        .withMessage('Must be at least 8 characters long'),
+        .withMessage('Username must be at least 8 characters long'),
     check('password')
         .isLength({ min: 8})
-        .withMessage('Must be at least 8 characters long')
-        .matches(/\d/).withMessage('Must contain a number')
+        .withMessage('Password must be at least 8 characters long')
+        .matches(/\d/).withMessage('Password must contain a number')
 ]
 
 router.post('/register', checkValidate, (req, res) => {
@@ -33,7 +37,7 @@ router.post('/register', checkValidate, (req, res) => {
     Users.addUser(user)
         .then(addedUser => {
             const token = generateToken(user)
-            const userAdded = { id: user.id, username: user.username}
+            const userAdded = { id: user.id, email: user.email, username: user.username}
 
             res.status(201).json({ userAdded, token})
         })
@@ -52,11 +56,11 @@ router.post('/login', (req,res) => {
                 const token = generateToken(user)
                 res.status(200).json({ message: `${user.username} is logged in.`, token})
             } else {
-                res.status(401).json({ message: 'Unauthorized access'})
+                res.status(401).send('Username or password is incorrect')
             }
         })
         .catch(error => {
-            res.status(500).json({ message: 'Failed to log into system'})
+            res.status(500).json({ message: 'Failed to log into system', error})
         })
 })
 
@@ -94,7 +98,7 @@ router.delete('/users/:id', async (req, res) => {
         if (deleted) {
             res.json(edited)
         } else {
-            res.status(404).json({ message: 'Could not find the correct data'})
+            res.status(404).json({ message: 'Failed to find the correct ID to delete'})
         }
     } catch (error) {
         res.status(500).json({ message: 'Failed to delete data'})

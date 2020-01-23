@@ -1,0 +1,56 @@
+.App {
+  text-align: center;
+}
+
+.nav {
+  height: 75px;
+  width: 1000px;
+  margin: 0 auto;
+  background: black;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links button {
+  color: white;
+  border: none;
+  background: black;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.auth {
+  width: 500px;
+  margin: 50px auto;
+}
+
+form input {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 25px;
+  margin: 20px auto;
+  border-radius: 5px;
+  outline: none;
+}
+
+form button {
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  background: black;
+  color: white;
+}
+
+.error {
+  color: red;
+}
