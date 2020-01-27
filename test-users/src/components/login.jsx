@@ -40,7 +40,9 @@ const Login = (props) => {
     return ( 
         <div className="auth">
             <form>
+                <label htmlFor="username"></label>
                 <input
+                    id="username"
                     placeholder="username"
                     type="text"
                     name="username"
@@ -49,8 +51,9 @@ const Login = (props) => {
                     onChange={handleChanges}
                 >
                 </input>
-                
+                <label htmlFor="password"></label>
                 <input
+                    id="password"
                     placeholder="password"
                     type="password"
                     name="password"

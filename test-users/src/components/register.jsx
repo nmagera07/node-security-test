@@ -48,7 +48,9 @@ const Register = (props) => {
     return ( 
         <div>
             <form autoComplete="off">
+                <label htmlFor="email"></label>
                 <input
+                    id="email"
                     placeholder="email"
                     type="email"
                     name="email"
@@ -57,7 +59,9 @@ const Register = (props) => {
                     onChange={handleChanges}
                 >
                 </input>
+                <label htmlFor="username"></label>
                 <input
+                    id="username"
                     placeholder="username"
                     type="text"
                     name="username"
@@ -66,8 +70,9 @@ const Register = (props) => {
                     onChange={handleChanges}
                 >
                 </input>
-                
+                <label htmlFor="password"></label>
                 <input
+                    id="password"
                     placeholder="password"
                     type="password"
                     name="password"
